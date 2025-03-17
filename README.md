@@ -1,6 +1,6 @@
 # This is a collection of my Ghidra scripts that I've written while analysing Microsoft security patches (patch diffing)
 
-## search_ghidra_data_types.py
+### 1. [search_ghidra_data_types.py](https://github.com/SlidingWindow/Ghidra_Scripts/blob/main/search_ghidra_data_types.py)
 
 Run this script after you've had Ghidra analyse the target patch file. It will iterate over all available data types, check if the current data type is a structure, and then see if the given string is present there in this structure. If yes, it will print it to the console.
 
