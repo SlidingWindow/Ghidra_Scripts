@@ -63,7 +63,7 @@ At this stage I could try to reverse engineer the `ndis!ndisCallNextDatapathHand
 1. Look at each data type displayed in the Data Types Manager section in Ghidra.
 2. In WinDBG, look at the register values since I had already broken into `Dot11Translate80211ToEthernetNdisPacket()` function and see I could figure out what data type they contain.
 
-I had no luck with the second option (WinDBG) but I will revisit it soon. As for the first option, I was too lazy to go through each data type (probably over a couple of hundred at least) manually, so I asked ChatGPT to write a Ghidra script for me. Offcourse, it didn't work off the shelf. I had to understand it and rewrite it, but got it working.
+I had no luck with the second option (WinDBG) but I will revisit it soon. As for the first option, I was too lazy to go through each data type (probably over a couple of hundred at least) manually, so I asked ChatGPT to write a Ghidra script for me. But as usual, it didn't work off the shelf!! I had to understand it and rewrite it from scratch.
 
 So, this is what it found:
 
