@@ -4,7 +4,7 @@
 
 Run this script after you've had Ghidra analyse the target patch file. It will iterate over all available data types, check if the current data type is a structure, and then see if the given string is present there in this structure. If yes, it will print it to the console.
 
-I wrote this script while analysing the Windows Wireless Driver (nWiFi.Sys) patch. I was trying to figure out the second argument, param2 passed to the patched function `Dot11Translate80211ToEthernetNdisPacket()`. This function calls another Windows API, `MmMapLockedPagesSpecifyCache()` and `param2 + 0x28` is passed as the first argument to it. According to this MSDN document[1], at offset 0x28 from param2, it must be a pointer to `_MDL` structure.
+I wrote this script while analysing the Windows Wireless Driver (nWiFi.Sys) patch. Contuining from where I left off in the part 1 of my blog post ([link here](https://research.aurainfosec.io/pentest/analysis-of-windows-wifi-driver-rce-vuln-cve-2024-30078/)),I was trying to figure out the second argument, param2 passed to the patched function `Dot11Translate80211ToEthernetNdisPacket()`. This function calls another Windows API, `MmMapLockedPagesSpecifyCache()` and `param2 + 0x28` is passed as the first argument to it. According to this MSDN document[1], at offset 0x28 from param2, it must be a pointer to `_MDL` structure.
 
 After retyping this variable in Ghidra, it looks like this:
 
