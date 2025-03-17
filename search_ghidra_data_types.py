@@ -26,6 +26,6 @@ for dt in dtm.getAllDataTypes():
 
 		if target_struct_name in data_type_name:
 			# print("[+]The following structure contains the structure {} you're looking for:\n{}".format(target_struct_name, struct_name))
-			print("Structure '{}' contains '{}' ({}) at DECIMAL offset {} (Hex Offset = {})".format(struct_name, field_name, data_type_name, comp.getOffset(), hex(comp.getOffset)))
+			print("Structure '{}' contains '{}' ({}) at DECIMAL offset {}".format(struct_name, field_name, data_type_name, comp.getOffset()))
 		else:
 			continue
