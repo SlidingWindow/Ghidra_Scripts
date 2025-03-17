@@ -97,8 +97,8 @@ I think it's safe to assume that the second argument passed to the patched funct
 
 
 
-## References:
-[1] https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/wdm/nf-wdm-mmm aplockedpagesspecifycache
-[2] https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/nblapi/nf-nbla pi-ndisadvancenetbufferlistdatastart
-[3] https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/nbl/ns-nbl-net _buffer_list
+### References:
+1. **https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/wdm/nf-wdm-mmm aplockedpagesspecifycache**
+2. **https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/nblapi/nf-nbla pi-ndisadvancenetbufferlistdatastart**
+3. **https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/nbl/ns-nbl-net _buffer_list**
 
