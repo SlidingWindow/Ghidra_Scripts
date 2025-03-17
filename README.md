@@ -65,31 +65,11 @@ At this stage I could try to reverse engineer the `ndis!ndisCallNextDatapathHand
 
 I had no luck with the second option (WinDBG) but I will revisit it soon. As for the first option, I was too lazy to go through each data type (probably over a couple of hundred at least) manually, so I asked ChatGPT to write a Ghidra script for me. Offcourse, it didn't work off the shelf. I had to understand it and rewrite it, but got it working.
 
-So, this is what 
+So, this is what it found:
 
 ```
 Find_Structs1.py> Running...
-Structure '_DMA_OPERATIONS' contains 'FlushAdapterBuffers' (_func___cdecl_uchar__DMA_ADAPTER_ptr__MDL_ptr_void_ptr_void_ptr_ulong_uchar *) at DECIMAL offset 40
-Structure '_DMA_OPERATIONS' contains 'MapTransfer' (_func___cdecl__LARGE_INTEGER__DMA_ADAPTER_ptr__MDL_ptr_void_ptr_void_ptr_ulong_ptr_uchar *) at DECIMAL offset 64
-Structure '_DMA_OPERATIONS' contains 'GetScatterGatherList' (_func___cdecl_long__DMA_ADAPTER_ptr__DEVICE_OBJECT_ptr__MDL_ptr_void_ptr_ulong__func___cdecl_void__DEVICE_OBJECT_ptr__IRP_ptr__SCATTER_GATHER_LIST_ptr_void_ptr_ptr_void_ptr_uchar *) at DECIMAL offset 88
-Structure '_DMA_OPERATIONS' contains 'CalculateScatterGatherList' (_func___cdecl_long__DMA_ADAPTER_ptr__MDL_ptr_void_ptr_ulong_ulong_ptr_ulong_ptr *) at DECIMAL offset 104
-Structure '_DMA_OPERATIONS' contains 'BuildScatterGatherList' (_func___cdecl_long__DMA_ADAPTER_ptr__DEVICE_OBJECT_ptr__MDL_ptr_void_ptr_ulong__func___cdecl_void__DEVICE_OBJECT_ptr__IRP_ptr__SCATTER_GATHER_LIST_ptr_void_ptr_ptr_void_ptr_uchar_void_ptr_ulong *) at DECIMAL offset 112
-Structure '_DMA_OPERATIONS' contains 'BuildMdlFromScatterGatherList' (_func___cdecl_long__DMA_ADAPTER_ptr__SCATTER_GATHER_LIST_ptr__MDL_ptr__MDL_ptr_ptr *) at DECIMAL offset 120
-Structure '_DMA_OPERATIONS' contains 'GetDmaTransferInfo' (_func___cdecl_long__DMA_ADAPTER_ptr__MDL_ptr_ulong64_ulong_uchar__DMA_TRANSFER_INFO_ptr *) at DECIMAL offset 136
-Structure '_DMA_OPERATIONS' contains 'MapTransferEx' (_func___cdecl_long__DMA_ADAPTER_ptr__MDL_ptr_void_ptr_ulong64_ulong_ulong_ptr_uchar__SCATTER_GATHER_LIST_ptr_ulong__func___cdecl_void__DMA_ADAPTER_ptr__DEVICE_OBJECT_ptr_void_ptr_DMA_COMPLETION_STATUS_ptr_void_ptr *) at DECIMAL offset 184
-Structure '_DMA_OPERATIONS' contains 'GetScatterGatherListEx' (_func___cdecl_long__DMA_ADAPTER_ptr__DEVICE_OBJECT_ptr_void_ptr__MDL_ptr_ulong64_ulong_ulong__func___cdecl_void__DEVICE_OBJECT_ptr__IRP_ptr__SCATTER_GATHER_LIST_ptr_void_ptr_ptr_void_ptr_uchar__func___cdecl_void__DMA_ADAPTER_ptr__DEVICE_OBJECT_ptr_void_ptr_DMA_COMPLETION_STATUS_ptr_void_ptr__SCATTER_GATHER_LIST_ptr_ptr *) at DECIMAL offset 192
-Structure '_DMA_OPERATIONS' contains 'BuildScatterGatherListEx' (_func___cdecl_long__DMA_ADAPTER_ptr__DEVICE_OBJECT_ptr_void_ptr__MDL_ptr_ulong64_ulong_ulong__func___cdecl_void__DEVICE_OBJECT_ptr__IRP_ptr__SCATTER_GATHER_LIST_ptr_void_ptr_ptr_void_ptr_uchar_void_ptr_ulong__func___cdecl_void__DMA_ADAPTER_ptr__DEVICE_OBJECT_ptr_void_ptr_DMA_COMPLETION_STATUS_ptr_void_ptr_void_ptr *) at DECIMAL offset 200
-Structure '_DMA_OPERATIONS' contains 'FlushAdapterBuffersEx' (_func___cdecl_long__DMA_ADAPTER_ptr__MDL_ptr_void_ptr_ulong64_ulong_uchar *) at DECIMAL offset 208
-Structure '_DMA_OPERATIONS' contains 'FlushDmaBuffer' (_func___cdecl_long__DMA_ADAPTER_ptr__MDL_ptr_uchar *) at DECIMAL offset 240
-Structure '_DMA_OPERATIONS' contains 'CreateCommonBufferFromMdl' (_func___cdecl_long__DMA_ADAPTER_ptr__MDL_ptr__DMA_COMMON_BUFFER_EXTENDED_CONFIGURATION_ptr_ulong__LARGE_INTEGER_ptr *) at DECIMAL offset 312
-Structure '_FAST_IO_DISPATCH' contains 'MdlRead' (_func___cdecl_uchar__FILE_OBJECT_ptr__LARGE_INTEGER_ptr_ulong_ulong__MDL_ptr_ptr__IO_STATUS_BLOCK_ptr__DEVICE_OBJECT_ptr *) at DECIMAL offset 128
-Structure '_FAST_IO_DISPATCH' contains 'MdlReadComplete' (_func___cdecl_uchar__FILE_OBJECT_ptr__MDL_ptr__DEVICE_OBJECT_ptr *) at DECIMAL offset 136
-Structure '_FAST_IO_DISPATCH' contains 'PrepareMdlWrite' (_func___cdecl_uchar__FILE_OBJECT_ptr__LARGE_INTEGER_ptr_ulong_ulong__MDL_ptr_ptr__IO_STATUS_BLOCK_ptr__DEVICE_OBJECT_ptr *) at DECIMAL offset 144
-Structure '_FAST_IO_DISPATCH' contains 'MdlWriteComplete' (_func___cdecl_uchar__FILE_OBJECT_ptr__LARGE_INTEGER_ptr__MDL_ptr__DEVICE_OBJECT_ptr *) at DECIMAL offset 152
-Structure '_FAST_IO_DISPATCH' contains 'FastIoReadCompressed' (_func___cdecl_uchar__FILE_OBJECT_ptr__LARGE_INTEGER_ptr_ulong_ulong_void_ptr__MDL_ptr_ptr__IO_STATUS_BLOCK_ptr__COMPRESSED_DATA_INFO_ptr_ulong__DEVICE_OBJECT_ptr *) at DECIMAL offset 160
-Structure '_FAST_IO_DISPATCH' contains 'FastIoWriteCompressed' (_func___cdecl_uchar__FILE_OBJECT_ptr__LARGE_INTEGER_ptr_ulong_ulong_void_ptr__MDL_ptr_ptr__IO_STATUS_BLOCK_ptr__COMPRESSED_DATA_INFO_ptr_ulong__DEVICE_OBJECT_ptr *) at DECIMAL offset 168
-Structure '_FAST_IO_DISPATCH' contains 'MdlReadCompleteCompressed' (_func___cdecl_uchar__FILE_OBJECT_ptr__MDL_ptr__DEVICE_OBJECT_ptr *) at DECIMAL offset 176
-Structure '_FAST_IO_DISPATCH' contains 'MdlWriteCompleteCompressed' (_func___cdecl_uchar__FILE_OBJECT_ptr__LARGE_INTEGER_ptr__MDL_ptr__DEVICE_OBJECT_ptr *) at DECIMAL offset 184
+<omitted first 40 lines>
 Structure '_IRP' contains 'MdlAddress' (_MDL *) at DECIMAL offset 8
 Structure '_MDL' contains 'Next' (_MDL *) at DECIMAL offset 0
 Structure '_NET_BUFFER_HEADER_s_0' contains 'CurrentMdl' (_MDL *) at DECIMAL offset 8
@@ -111,9 +91,14 @@ Structure 'NWIFI_MSDU' contains 'pTail' (_MDL *) at DECIMAL offset 48
 Find_Structs1.py> Finished!
 ```
 
+I had to scroll through approximately 53 lines but it was much better than manually searching through the Data Types in Ghidra! The last to second line caught my attention, where it says the structure `NWIFI_MSDU` contains a pointer to `MDL` at offset 40. This offset is in decimal (not sure why Ghidra does it), but in in hexadecimal it's 0x28. If you recall, the `param2 + 0x28` is a pointer to `_MDL`. 
+
+I think it's safe to assume that the second argument passed to the patched function `Dot11Translate80211ToEthernetNdisPacket()` is an MSDU structure. May be this is not the best way to figure out data type of the arguments passed to the patched function and it this approach (so, this Ghidra script) may not work in all scenarios. But I think, I now have something to continue my patch analysis further.
+
 
 
 ## References:
 [1] https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/wdm/nf-wdm-mmm aplockedpagesspecifycache
 [2] https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/nblapi/nf-nbla pi-ndisadvancenetbufferlistdatastart
 [3] https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/nbl/ns-nbl-net _buffer_list
+
