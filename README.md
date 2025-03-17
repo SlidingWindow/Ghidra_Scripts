@@ -99,6 +99,6 @@ I think it's safe to assume that the second argument passed to the patched funct
 
 ### References:
 - https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/wdm/nf-wdm-mmmaplockedpagesspecifycache
-- https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/nblapi/nf-nbla pi-ndisadvancenetbufferlistdatastart
-- https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/nbl/ns-nbl-net _buffer_list
+- https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/nblapi/nf-nblapi-ndisadvancenetbufferlistdatastart
+- https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/nbl/ns-nbl-net_buffer_list
 
