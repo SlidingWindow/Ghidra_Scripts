@@ -106,4 +106,4 @@ I think it's safe to assume that the second argument passed to the patched funct
 
 Thanks to my employer <a href='https://www.aurainfosec.com/'>Aura Information Security</a> for providing time for me to work on this project.
 
-![aura-logo](https://www.aurainfosec.com/assets/img/aura_aog.jpg)
+![aura-logo](https://www.kordia.co.nz/hubfs/Aura_sub-menu-white.svg)
